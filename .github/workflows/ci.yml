@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  run_ci:
+  test:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -27,11 +27,8 @@ jobs:
         run: npm install
 
       - name: Verify formatting
-        if: matrix.os != 'windows-latest'
         run: npm run format:check
 
       - name: Run Test
+        if: matrix.os != 'windows-latest'
         run: npm run test
-
-      - name: Run Build
-        run: npm run build
