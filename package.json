@@ -9,7 +9,7 @@
     "test": "tsx --test ./tests/*",
     "format": "prettier --write \"src/*{.ts,.tsx,.js}\"",
     "format:check": "prettier --check \"src/*{.ts,.tsx,.js}\"",
-    "build": "rimraf dist && tsc && tsc --project tsconfig.esm.json && node ./scripts/pkg.js"
+    "build": "rimraf dist && tsc && tsc --project tsconfig.esm.json && tsx ./scripts/pkg.js"
   },
   "repository": {
     "type": "git",
