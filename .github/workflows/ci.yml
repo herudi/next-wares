@@ -8,27 +8,13 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        os: [macOS-latest, windows-latest, ubuntu-latest]
-      fail-fast: true
     steps:
-      - name: Setup repo
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 'node20'
-
-      - name: Install Deps
-        run: npm install
-
-      - name: Verify formatting
-        run: npm run format:check
-
-      - name: Run Test
-        if: matrix.os != 'windows-latest'
-        run: npm run test
+          node-version: 20
+      - run: npm i
+      - run: npm run format:check
+      - run: npm run test
