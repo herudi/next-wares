@@ -9,7 +9,7 @@
     "test": "tsx --test ./tests/*",
     "format": "prettier --write \"src/*{.ts,.tsx,.js}\"",
     "format:check": "prettier --check \"src/*{.ts,.tsx,.js}\"",
-    "cov": "node --import=tsx --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info ./tests/*",
+    "cov": "node --import=tsx --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info ./tests/*.test.ts",
     "build": "rimraf dist && tsc && tsc --project tsconfig.esm.json && tsx ./scripts/pkg.js"
   },
   "repository": {

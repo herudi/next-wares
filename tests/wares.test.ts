@@ -5,7 +5,7 @@ import { wares } from '../src/index';
 const base = 'http://localhost:3000';
 
 const ExNextRes = (msg: string) => ({
-  next: async () => new Response(msg),
+  next: () => new Response(msg),
 });
 
 class ExURLPattern {
