@@ -18,3 +18,7 @@ jobs:
       - run: npm i
       - run: npm run format:check
       - run: npm run test
+      - run: npm run cov
+      - uses: codecov/codecov-action@v3
+        with:
+          files: lcov.info

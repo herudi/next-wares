@@ -2,6 +2,10 @@
 
 Tiny middleware-helper for nextjs (app-router).
 
+[![CI](https://github.com/herudi/next-wares/workflows/ci/badge.svg)](https://github.com/herudi/next-wares)
+[![npm version](https://badge.fury.io/js/next-wares.svg)](https://badge.fury.io/js/next-wares)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/next-wares)
+
 ## Features
 - Design for Simple and easy to use.
 - Global middleware support (via `middleware.(ts|js)`).
@@ -67,11 +71,19 @@ const validate: Handler = (req, next) => {
   return next();
 }
 
-// example for POST methods.
+// example for POST methods with validate.
 export const POST = handler(
   validate,
   (req) => {
     return Response.json({ name: "john" })
+  }
+)
+
+// example GET with pass params.
+export const GET = handler(
+  (req, next, { params }: { params: Promise<{ slug: string }> }) => {
+    const slug = (await params).slug;
+    return Response.json({ slug })
   }
 )
 ```

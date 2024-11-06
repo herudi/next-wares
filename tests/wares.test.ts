@@ -1,6 +1,6 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
-import { wares } from './../src/index';
+import { wares } from '../src/index';
 
 const base = 'http://localhost:3000';
 
@@ -33,8 +33,8 @@ class NextRequest extends Request {
 }
 
 describe('test:wares', () => {
-  it('wares', async () => {
-    const res = await wares(ExNextRes('hello'), ExURLPattern, {
+  it('route for wares', async () => {
+    const fn = wares(ExNextRes('hello'), ExURLPattern, {
       '/api/*': [
         async (req, next) => {
           const res = await next();
@@ -47,20 +47,28 @@ describe('test:wares', () => {
           return res;
         },
       ],
-      '/api/not-call': async (req, next) => {
+      '/api/user': async (req, next) => {
         const res = await next();
-        res.headers.set('key3', 'not-call');
+        res.headers.set('key3', 'user');
         return res;
       },
+      '/api/about': (req, next) => next(),
       '*': async (req, next) => {
         const res = await next();
         res.headers.set('key4', 'all');
         return res;
       },
-    })(new NextRequest(base + '/api/about'));
+    });
+    const res = await fn(new NextRequest(base + '/api/about'));
     assert.equal(res.headers.get('key1'), 'api');
     assert.equal(res.headers.get('key2'), 'api');
     assert.equal(res.headers.get('key3'), null);
     assert.equal(res.headers.get('key4'), 'all');
+
+    const res2 = await fn(new NextRequest(base + '/api/user'));
+    assert.equal(res2.headers.get('key1'), 'api');
+    assert.equal(res2.headers.get('key2'), 'api');
+    assert.equal(res2.headers.get('key3'), 'user');
+    assert.equal(res2.headers.get('key4'), 'all');
   });
 });

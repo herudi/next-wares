@@ -1,6 +1,6 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
-import { handler } from './../src/index';
+import { handler } from '../src/index';
 
 const base = 'http://localhost:3000';
 
