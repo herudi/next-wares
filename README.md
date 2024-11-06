@@ -5,6 +5,7 @@ Tiny middleware-helper for nextjs (app-router).
 [![CI](https://github.com/herudi/next-wares/workflows/ci/badge.svg)](https://github.com/herudi/next-wares)
 [![npm version](https://badge.fury.io/js/next-wares.svg)](https://badge.fury.io/js/next-wares)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/next-wares)
+[![codecov](https://codecov.io/gh/herudi/next-wares/graph/badge.svg?token=ETMNO1V5D6)](https://codecov.io/gh/herudi/next-wares)
 
 ## Features
 - Design for Simple and easy to use.
