@@ -18,8 +18,8 @@ jobs:
       - run: npm i
       - run: npm run format:check
       - run: npm run test
-      - run: npm run cov
+      - run: npm run coverage
       - uses: codecov/codecov-action@v4
         with:
-          files: lcov.info
+          files: coverage/lcov.info
           token: ${{ secrets.CODECOV_TOKEN }}

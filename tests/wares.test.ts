@@ -71,4 +71,11 @@ describe('test:wares', () => {
     assert.equal(res2.headers.get('key3'), 'user');
     assert.equal(res2.headers.get('key4'), 'all');
   });
+
+  it('undefined wares', () => {
+    const res = wares<NextRequest>(ExNextRes('hello'), ExURLPattern, {
+      '*': () => void 0,
+    })(new NextRequest(base + '/api/about'), { params: { name: 'john' } });
+    assert.equal(res, undefined);
+  });
 });

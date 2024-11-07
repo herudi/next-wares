@@ -2,3 +2,5 @@ package-lock.json
 node_modules
 dist
 lcov.info
+.nyc_output
+coverage

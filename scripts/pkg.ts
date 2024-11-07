@@ -1,4 +1,4 @@
-const { writeFileSync } = require('node:fs');
+import { writeFileSync } from 'node:fs';
 
 writeFileSync('dist/esm/package.json', JSON.stringify({ type: 'module' }), {
   encoding: 'utf-8',
