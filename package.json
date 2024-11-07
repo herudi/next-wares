@@ -1,15 +1,15 @@
 {
   "name": "next-wares",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "Tiny middleware-helper for nextjs (app-router).",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "test": "node --import=tsx --test ./tests/*",
-    "coverage": "nyc --reporter=lcov npm run test",
+    "test": "node --import=tsx --test ./tests/*.test.ts",
     "format": "prettier --write \"./**/*.ts\"",
-    "format:check": "prettier --check \"./**/*.ts\"",
+    "format:check": "prettier --write \"./**/*.ts\"",
+    "cov": "node --import=tsx --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info ./tests/*.test.ts",
     "build": "rimraf dist && tsc && tsc --project tsconfig.esm.json && tsx ./scripts/pkg.ts"
   },
   "repository": {
@@ -31,7 +31,6 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.8.7",
-    "nyc": "^17.1.0",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "tsx": "^4.19.2",
